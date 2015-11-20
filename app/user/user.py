@@ -12,7 +12,7 @@ def user():
      homedir = request.form['homedir']
      shell = request.form['shell']
      operation = request.form['operation']
-     #return render_template('error.html',msg=operation.lower())
+     sudo = request.form['sudo']
      if operation.lower() == 'create' and ( not username or not password ):
        msg="Username/Password is missing."
        return render_template('error.html',msg=msg)
@@ -47,7 +47,7 @@ def user():
        if userExistance(user=username) != 0:
          msg = "User: {} dosen't exists".format(username)
          return render_template('error.html',msg=msg)
-       if deleteUser(user) != 0:
+       if deleteUser(user=username) != 0:
          msg="User '{}' deletion failed.".format(username)
          return render_template('error.html',msg=msg)
        msg="User '{}' deleted  Successfully.".format(username)

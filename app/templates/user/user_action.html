@@ -4,7 +4,7 @@
   </title>
   <body>
     <div><center><h1>
-      Enter The inputs for user creation
+      Enter The inputs for user & operation
     </h1></center></div>
     <form method="post"><center>
         <div>
@@ -24,13 +24,19 @@
         <input type="text" name="shell" />
       </div>
       <div>
+      <h4>Sudo previlege?</h4>
+        <select name='sudo'>
+          <option value='true'>Yes</option>
+          <option value='false'>No</option>
+        </select>
+      </div>
+      <div>
       <h4>Operation?</h4>
         <select name='operation'>
           <option value='create'>Create</option>
           <option value='modify'>Modify</option>
           <option value='delete'>Delete</option>          
         </select>
-      </div>
       <div><br>
         <button type="submit">Submit</button>
       </br></div>
