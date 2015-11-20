@@ -1,11 +1,12 @@
 from app import app
 from flask import render_template,request
 
-@app.route('/user', method = ['GET', 'POST'])
+@app.route('/user', methods = ['GET', 'POST'])
+def user():
   if request.method == 'GET':
-     return render.template('user/user_action.html')
+     return render_template('user/user_action.html')
   elif request.method == 'POST':
-     username = request.data['username']
-     password = request.data['password']
-     shell = request.data['shell']
+     username = request.form['username']
+     password = request.form['password']
+     shell = request.form['shell']
      return 'Successfully submited' + username + password + shell
