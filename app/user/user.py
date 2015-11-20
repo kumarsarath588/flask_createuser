@@ -1,6 +1,6 @@
 from app import app
 from flask import render_template,request
-from app.user.actions import createUser,userExistance,modifyUser,deleteUser
+from app.user.actions import createUser,userExistance,modifyUser,deleteUser,sudoPrevilege
 
 @app.route('/user', methods = ['GET', 'POST'])
 def user():
@@ -30,6 +30,11 @@ def user():
          msg="User '{}' Creation failed.".format(username)
          return render_template('error.html',msg=msg)
        msg="User '{}' Created Successfully.".format(username)
+       if sudo == 'true':
+         if sudoPrevilege(user=username) != 0:
+           msg="User '{}' Created Successfully, but sudo previlege failed".format(username)
+           return render_template('error.html',msg=msg)
+         msg="User '{}' Created Successfully, sudo previlege success".format(username)
        return render_template('success.html',msg=msg)
      elif operation.lower() == 'modify':
        if not password and not shell and not homedir:
@@ -42,6 +47,11 @@ def user():
          msg="User '{}' modification failed.".format(username)
          return render_template('error.html',msg=msg)
        msg="User '{}' modified Successfully.".format(username)
+       if sudo == 'true':
+         if sudoPrevilege(user=username) != 0:
+           msg="User '{}' modified Successfully, sudo previlege failed".format(username)
+           return render_template('error.html',msg=msg)
+         msg="User '{}' Created Successfully, sudo previlege success".format(username)
        return render_template('success.html',msg=msg)
      elif operation.lower() == 'delete':
        if userExistance(user=username) != 0:

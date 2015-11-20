@@ -56,3 +56,22 @@ def deleteUser(user):
     return cmd.returncode
   except:
     msg = "Error occured while executing user deletion: {}.".format(' '.join(args))
+
+def sudoPrevilege(user):
+  found = False
+  try:
+    args = "{} ALL=(ALL) NOPASSWD:ALL".format(user)
+    with open('/etc/sudoers') as sudoersFile:
+      for line in sudoersFile:
+        if str(args) in line:
+          return 0
+          found = True
+
+    if not found:
+      with open('/etc/sudoers', 'a') as sudoersFileAppend:
+        sudoersFileAppend.write(str(args)+"\n")
+        sudoersFileAppend.close()
+    return 0
+  except:
+    msg = "Unable to add user '{}' to sudoers.".format(user)
+    return 1
