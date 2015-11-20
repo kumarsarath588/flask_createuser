@@ -3,29 +3,37 @@
     Automate User Creation
   </title>
   <body>
-    <div><center>
+    <div><center><h1>
       Enter The inputs for user creation
-    </center></div>
-    <form method="post">
-      <div>
-	<label for="username">Username</label>
+    </h1></center></div>
+    <form method="post"><center>
+        <div>
+	<label for="username"><h4>Username</h4></label>
         <input type="text" name="username" />
-      </div>
+        </div>
       <div>
-	<label for="password">Password</label>
+	<label for="password"><h4>Password</h4></label>
         <input type="password" name="password" />
       </div>
       <div>
-	<label for="homedir">Home Directory</label>
+	<label for="homedir"><h4>Home Directory</h4></label>
         <input type="text" name="homedir" />
       </div>
       <div>
-	<label for="shell">Shell</label>
+	<label for="shell"><h4>Shell</h4></label>
         <input type="text" name="shell" />
       </div>
       <div>
-        <button type="submit">Submit</button>
+      <h4>Operation?</h4>
+        <select name='operation'>
+          <option value='create'>Create</option>
+          <option value='modify'>Modify</option>
+          <option value='delete'>Delete</option>          
+        </select>
       </div>
-    </form>
+      <div><br>
+        <button type="submit">Submit</button>
+      </br></div>
+    </center></form>
   </body>
 </html>
