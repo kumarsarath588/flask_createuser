@@ -8,5 +8,6 @@ def user():
   elif request.method == 'POST':
      username = request.form['username']
      password = request.form['password']
+     homedir = request.form['homedir']
      shell = request.form['shell']
-     return 'Successfully submited' + username + password + shell
+     return 'Successfully submited' + ' '.join([username, password, shell, homedir])
