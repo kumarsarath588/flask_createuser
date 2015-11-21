@@ -37,21 +37,22 @@ def user():
          msg="User '{}' Created Successfully, sudo previlege success".format(username)
        return render_template('success.html',msg=msg)
      elif operation.lower() == 'modify':
-       if not password and not shell and not homedir:
+       if not password and not shell and not homedir and sudo != 'true':
          msg = "Nothing to modify for user: {}".format(username)
          return render_template('error.html',msg=msg)
        if userExistance(user=username) != 0:
          msg = "User: {} dosen't exists".format(username)
          return render_template('error.html',msg=msg)
-       if modifyUser(user=username,passwd=password,homedir=homedir,shell=shell) != 0:
-         msg="User '{}' modification failed.".format(username)
-         return render_template('error.html',msg=msg)
-       msg="User '{}' modified Successfully.".format(username)
+       if password or shell or homedir:
+         if modifyUser(user=username,passwd=password,homedir=homedir,shell=shell) != 0:
+           msg="User '{}' modification failed.".format(username)
+           return render_template('error.html',msg=msg)
+         msg="User '{}' modified Successfully.".format(username)
        if sudo == 'true':
          if sudoPrevilege(user=username) != 0:
            msg="User '{}' modified Successfully, sudo previlege failed".format(username)
            return render_template('error.html',msg=msg)
-         msg="User '{}' Created Successfully, sudo previlege success".format(username)
+         msg="User '{}' modified Successfully, sudo previlege success".format(username)
        return render_template('success.html',msg=msg)
      elif operation.lower() == 'delete':
        if userExistance(user=username) != 0:

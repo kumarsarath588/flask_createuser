@@ -4,6 +4,8 @@
   </title>
   <body>
    <div><center><h1>welcome to automation portal<h1></center><div>
-   <div><center><a href='{{ processes }}'>Linux User Management</a></center></div>
+    {% for process in processes %}
+      <div><center><a href='{{ process }}'>Linux {{ process }} Management</a></center></div>
+    {% endfor %}
   </body>
 </html>
