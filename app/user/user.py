@@ -3,6 +3,13 @@ from flask import render_template,request
 from app.user.actions import createUser,userExistance,modifyUser,deleteUser,sudoPrevilege
 import logging as log
 
+
+"""
+  This routers the main process for user management, which uses GET & POST methods.
+  GET method sends the web page which takes in inputs for user.
+  POST method gets the inputs from form and flask script takes the inputs,
+  creates/modifies/deletes user according to the operation selected.
+"""
 @app.route('/user', methods = ['GET', 'POST'])
 def user():
   if request.method == 'GET':

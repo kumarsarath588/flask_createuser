@@ -3,6 +3,12 @@ import os
 import logging as log
 from sys import exit
 
+"""
+  Creating log directory, opening log file for logging all errors and information
+  this application requires elevations either root/sudo previlege
+  start the flask on 0.0.0.0 and port no 80.
+"""
+
 try:
   if not os.path.exists('log'):
         os.makedirs('log')

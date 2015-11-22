@@ -1,6 +1,11 @@
 import subprocess
 import crypt
 
+"""
+  This contains actions for user management user existance/create/modify/delete.
+  User.py uses these actions and controls the operations.
+"""
+
 def userExistance(user):
   try:
     args = ['getent', 'passwd', user]
