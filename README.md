@@ -17,10 +17,12 @@ This web application has a index page with all the process and each process intu
 
 `Python run.py`
 
-4. Now open your browser goto IP address of the server where you started the application like http://<hostname/ip>.
-5. You can see a welcome page click on linux user mangement.
-6. Type username and password (remaining are optional).
-7. Press sumbit, Now check in the server i will have user which you have created.
+4.  The above command start the application on port number 80.
+5.	Now open your browser go to IP address of the server where you started the application like http://<IPaddress>.
+6.	You can see a welcome page click on linux user management.
+7.	Type username and password (remaining are optional).
+8.	Press submit; Now check in the server it will have user which you have created.
+
 
 `getent passwd <username>`
 
